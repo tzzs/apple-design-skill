@@ -2,7 +2,7 @@
 
 [English](README.md) | **简体中文**
 
-一个 [Claude Code](https://claude.com/claude-code) 技能/插件，把 Apple 官方 [Human Interface Guidelines](https://developer.apple.com/design/human-interface-guidelines/) 整理成可直接使用的参考资料，帮助你为 iOS、iPadOS、macOS、watchOS、visionOS（部分内容也涉及 tvOS）设计或评审用户界面。
+一个可移植的 [Agent Skill](https://www.anthropic.com/engineering/equipping-agents-for-the-real-world-with-agent-skills)，把 Apple 官方 [Human Interface Guidelines](https://developer.apple.com/design/human-interface-guidelines/) 整理成可直接使用的参考资料，帮助你为 iOS、iPadOS、macOS、watchOS、visionOS（部分内容也涉及 tvOS）设计或评审用户界面。它本质上就是一份 `SKILL.md` 加配套参考文件，所以不只支持 [Claude Code](https://claude.com/claude-code)（作为原生插件安装），也能通过 [skills.sh](https://skills.sh) 安装到任何支持 Agent Skills 格式的其他编码 Agent 上——比如 Codex、Cursor、OpenCode 等。
 
 > 这是一个独立的、由社区维护的项目，与 Apple Inc. 没有任何从属、认可或赞助关系。文中出现的 "Apple"、"iOS"、"macOS" 等均为 Apple Inc. 的商标，此处仅用于描述内容主题。
 
@@ -36,7 +36,7 @@ apple-design/
 
 ## 安装方式
 
-### 作为 Claude Code 插件（推荐）
+### Claude Code（原生插件，推荐给 Claude Code 用户）
 
 ```bash
 claude plugin marketplace add tzzs/apple-design-skill
@@ -49,14 +49,40 @@ claude plugin install apple-design@tzzs
 claude plugin list
 ```
 
-### 作为个人技能（软链接，不走插件系统）
+### 其他任意 Agent（Codex、Cursor、OpenCode 等 70+ 种）：通过 skills.sh
+
+[skills.sh](https://skills.sh) 是一个类似包管理器的 Agent Skills 目录站点，背后是开源的 [`npx skills`](https://github.com/vercel-labs/skills) CLI 工具。因为这个仓库的 `SKILL.md` 就放在仓库根目录，CLI 会自动识别，不需要额外指定路径：
+
+```bash
+npx skills add tzzs/apple-design-skill
+```
+
+CLI 会检测你本机已安装的 Agent 并让你交互式勾选；如果想跳过交互，直接指定目标 Agent：
+
+```bash
+# 只给 Codex 和 Cursor 安装，且不弹交互确认
+npx skills add tzzs/apple-design-skill -a codex -a cursor -y
+
+# 一次性给 skills.sh 支持的所有 Agent 都装上，全局生效
+npx skills add tzzs/apple-design-skill -g --all
+```
+
+查看已安装内容：
+
+```bash
+npx skills list
+```
+
+如果你更想把 Claude Code 的技能也统一交给 `npx skills` 管理（而不是走上面的原生插件系统），这条命令同样适用——它会装到 `.claude/skills/` 或 `~/.claude/skills/`。
+
+### 手动安装（软链接，不依赖网络/npx）
 
 ```bash
 git clone https://github.com/tzzs/apple-design-skill.git
-ln -s "$(pwd)/apple-design-skill" ~/.claude/skills/apple-design
+ln -s "$(pwd)/apple-design-skill" ~/.claude/skills/apple-design   # 换成你所用 Agent 对应的 skills 目录即可
 ```
 
-个人技能在会话启动时加载，装好之后需要开一个新的 Claude Code 会话才能生效。
+技能通常在会话/Agent 启动时加载，装好之后开一个新会话即可生效。
 
 ## 使用方式
 
@@ -67,15 +93,23 @@ ln -s "$(pwd)/apple-design-skill" ~/.claude/skills/apple-design
 - "状态指示器该用哪种 SF Symbols 渲染模式？"
 - "visionOS 上控件的最小点击区域是多大？"
 
-如果你的客户端支持 slash command 调用技能，也可以用 `/apple-design` 显式触发。
+在 Claude Code 里，也可以用 `/apple-design` 显式触发；其他 Agent 各自有自己的技能调用方式。
 
 ## 更新
+
+如果是通过 Claude Code 插件安装的：
 
 ```bash
 cd apple-design-skill
 git pull
 claude plugin marketplace update tzzs
 claude plugin update apple-design@tzzs
+```
+
+如果是通过 `npx skills` 安装的（按已安装的技能名更新，不是按仓库地址）：
+
+```bash
+npx skills update apple-design
 ```
 
 ## 内容与版权说明

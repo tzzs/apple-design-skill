@@ -2,7 +2,7 @@
 
 **English** | [简体中文](README.zh-CN.md)
 
-A [Claude Code](https://claude.com/claude-code) skill/plugin that turns Apple's official [Human Interface Guidelines](https://developer.apple.com/design/human-interface-guidelines/) into ready-to-use reference material for designing and reviewing user interfaces on iOS, iPadOS, macOS, watchOS, and visionOS (with tvOS notes where relevant).
+A portable [Agent Skill](https://www.anthropic.com/engineering/equipping-agents-for-the-real-world-with-agent-skills) that turns Apple's official [Human Interface Guidelines](https://developer.apple.com/design/human-interface-guidelines/) into ready-to-use reference material for designing and reviewing user interfaces on iOS, iPadOS, macOS, watchOS, and visionOS (with tvOS notes where relevant). It's just a `SKILL.md` plus supporting reference files, so it works with [Claude Code](https://claude.com/claude-code) (as a native plugin) and with any other coding agent that supports the Agent Skills format — Codex, Cursor, OpenCode, and others — via [skills.sh](https://skills.sh).
 
 > This is an independent, community-maintained project. It is not affiliated with, endorsed by, or sponsored by Apple Inc. "Apple," "iOS," "macOS," and the other platform/technology names used here are trademarks of Apple Inc., used only to describe the subject matter of this content.
 
@@ -36,7 +36,7 @@ The content follows a progressive-disclosure structure: `SKILL.md` stays short a
 
 ## Install
 
-### As a Claude Code plugin (recommended)
+### Claude Code (native plugin, recommended for Claude Code)
 
 ```bash
 claude plugin marketplace add tzzs/apple-design-skill
@@ -49,14 +49,40 @@ Verify it's active:
 claude plugin list
 ```
 
-### As a personal skill (symlink, no plugin system)
+### Any other agent (Codex, Cursor, OpenCode, and 70+ more) via skills.sh
+
+[skills.sh](https://skills.sh) is a package-manager-style catalog for Agent Skills, backed by the open-source [`npx skills`](https://github.com/vercel-labs/skills) CLI. Since this repo's `SKILL.md` sits at the repository root, the CLI picks it up automatically — no extra path needed:
+
+```bash
+npx skills add tzzs/apple-design-skill
+```
+
+The CLI detects installed agents and prompts you to pick one or more; to skip the prompt, target agents explicitly:
+
+```bash
+# Install for Codex and Cursor only, non-interactively
+npx skills add tzzs/apple-design-skill -a codex -a cursor -y
+
+# Install once, globally, for every agent skills.sh knows how to configure
+npx skills add tzzs/apple-design-skill -g --all
+```
+
+Check what's installed:
+
+```bash
+npx skills list
+```
+
+This also works for Claude Code itself (it installs into `.claude/skills/` or `~/.claude/skills/`) if you'd rather manage it alongside your other agents' skills instead of through the native plugin system above.
+
+### Manual install (symlink, no network/npx required)
 
 ```bash
 git clone https://github.com/tzzs/apple-design-skill.git
-ln -s "$(pwd)/apple-design-skill" ~/.claude/skills/apple-design
+ln -s "$(pwd)/apple-design-skill" ~/.claude/skills/apple-design   # or the equivalent skills/ directory for your agent
 ```
 
-Personal skills load at session start, so open a new Claude Code session afterward.
+Skills usually load at session/agent start, so start a new session afterward.
 
 ## Usage
 
@@ -67,15 +93,23 @@ Once installed, the skill triggers automatically on Apple-platform UI design que
 - "Which SF Symbol rendering mode should I use for a status indicator?"
 - "What's the minimum tap target size on visionOS?"
 
-You can also invoke it directly with `/apple-design` if your client supports slash-command skill invocation.
+In Claude Code, you can also invoke it directly with `/apple-design`; other agents follow their own skill-invocation conventions.
 
 ## Updating
+
+If you installed it as a Claude Code plugin:
 
 ```bash
 cd apple-design-skill
 git pull
 claude plugin marketplace update tzzs
 claude plugin update apple-design@tzzs
+```
+
+If you installed it via `npx skills` (this updates by installed skill name, not repo source):
+
+```bash
+npx skills update apple-design
 ```
 
 ## Content and licensing notes
