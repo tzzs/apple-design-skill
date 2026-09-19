@@ -2,6 +2,8 @@
 
 Source: `.../accessibility`
 
+**This file holds the authoritative specs tables for the whole skill** — type sizes, control sizes, and contrast ratios. Other files link here instead of copying the numbers. Note the two distinct columns in each table: *default* is the design target, *minimum* is the absolute floor.
+
 Accessibility isn't an "extra feature" — it's what lets more people actually use your product, which directly echoes the Flexibility principle in [principles.md](principles.md). An accessible interface should be:
 
 - **Intuitive** — uses familiar, consistent interactions that make tasks straightforward
@@ -13,7 +15,7 @@ Use **Accessibility Inspector** during design to catch accessibility issues, and
 ## Vision
 
 - **Support larger text sizes** — ideally let people enlarge text/icons by at least 200% (140% on watchOS), through custom UI or by adopting Dynamic Type
-- **Use the recommended defaults for custom type sizes**, matching the table below (same as [typography-symbols.md](typography-symbols.md)):
+- **Use the recommended defaults for custom type sizes**, matching the table below:
 
   | Platform | Default size | Minimum size |
   |---|---|---|

@@ -10,7 +10,7 @@ A button is defined by three attributes working together:
 - **Role** — a system-defined semantic role that can affect appearance: `Normal` (no specific meaning) / `Primary` (the default button, the one people are most likely to choose) / `Cancel` (cancels the current action) / `Destructive` (an action that can result in data loss)
 
 **Best practices**:
-- Hit target at least **44×44pt** (**60×60pt** on visionOS), with enough surrounding space to visually separate the button from neighboring content and controls
+- Hit target at least **44×44pt** (**60×60pt** on visionOS), with enough surrounding space to visually separate the button from neighboring content and controls. This matches the *default* control size in [accessibility.md](accessibility.md); the much smaller *minimum* control size in that table is an absolute floor for controls in general, not a target for buttons
 - Always include a press state for a custom button — without one, it can feel unresponsive
 - Keep **one or two** prominent-style buttons per view at most — too many increases cognitive load; use style (not size) to distinguish the preferred option among a set of choices
 - **Assign the Primary role to the button people are most likely to choose** (it responds to Return, making quick confirmation easy), but **never assign Primary to a destructive action**, even if it's the most likely choice — people sometimes tap a visually prominent button without reading it, so keep Primary reserved for non-destructive actions

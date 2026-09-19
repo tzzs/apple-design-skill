@@ -1,6 +1,6 @@
 # Materials, Liquid Glass, and Color
 
-Source: `.../materials` (updated 2025-09-09), `.../color`
+Source: `.../materials`, `.../color`
 
 ## What is a Material
 

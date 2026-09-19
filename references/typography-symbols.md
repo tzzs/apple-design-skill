@@ -19,15 +19,9 @@ The system defines a set of "text styles" (Large Title, Title, Headline, Body, C
 
 Use symbolic traits to tweak a built-in style when needed (e.g. `bold()` for emphasis), and adjust leading if necessary (loose leading suits wide columns/long passages; tight leading suits constrained spaces, but avoid overly tight leading once you have three or more lines).
 
-### Default / minimum sizes by platform
+### Sizes, weight, and legibility
 
-| Platform | Default size | Minimum size |
-|---|---|---|
-| iOS, iPadOS | 17pt | 11pt |
-| macOS | 13pt | 10pt |
-| tvOS | 29pt | 23pt |
-| visionOS | 17pt | 12pt |
-| watchOS | 16pt | 12pt |
+The per-platform default and minimum type sizes live in the Specifications table in [accessibility.md](accessibility.md) — the single source for every number in this skill.
 
 - Font weight also affects legibility: bump size up for thin weights
 - **Generally avoid Ultralight/Thin/Light weights**, which are hard to read especially at small sizes; prefer Regular/Medium/Semibold/Bold

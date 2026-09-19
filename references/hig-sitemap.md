@@ -1,6 +1,6 @@
 # Full Human Interface Guidelines Sitemap
 
-This file lists the complete page structure and URLs for Apple's Human Interface Guidelines (HIG) as of September 2026 (the iOS/iPadOS/macOS 27, watchOS 26, visionOS 26 era). When the condensed summaries in [SKILL.md](../SKILL.md) or the other `references/` files aren't enough, or you need the **latest, complete** official text for a specific component or pattern, open the matching URL directly with WebFetch or a browser tool — don't guess at details (sizes, color values, API names, etc.) from memory, since these get tuned nearly every year.
+This file lists the complete page structure and URLs for Apple's Human Interface Guidelines (HIG), as of the iOS/iPadOS/macOS 27, watchOS 26, visionOS 26 era. When the condensed summaries in [SKILL.md](../SKILL.md) or the other `references/` files aren't enough, or you need the latest complete official text for a specific component or pattern, open the matching URL here — that's how a claim becomes *grounded* (see SKILL.md).
 
 Every URL below is rooted at `https://developer.apple.com/design/human-interface-guidelines/` — only the `<slug>` is listed.
 
@@ -111,5 +111,5 @@ Every URL below is rooted at `https://developer.apple.com/design/human-interface
 1. Start with SKILL.md and the condensed summaries in `references/` — they answer most design decisions.
 2. For a specific component the summaries don't cover (context menus, popovers, segmented controls, etc.), look up the slug above and open the URL directly, e.g.:
    `https://developer.apple.com/design/human-interface-guidelines/context-menus`
-3. When a recommendation hinges on **specific numbers** (spacing, type size, contrast ratio, hit target size), verify against the original source before stating it as a conclusion — these values tend to shift slightly after almost every WWDC.
-4. These pages are JavaScript-rendered single-page apps. A plain WebFetch often only captures the title, not the body. If a fetch comes back suspiciously short, switch to a browser tool (navigate → wait 1-2s → get_page_text) to get the real content — never fill the gap with content recalled from training knowledge.
+
+SKILL.md's "Grounded, or guessing" section covers when a fetch is required and how to get the body out of these JavaScript-rendered pages.

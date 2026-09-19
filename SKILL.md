@@ -1,19 +1,26 @@
 ---
 name: apple-design
-description: Design reference skill built on Apple's official Human Interface Guidelines (HIG), for designing or reviewing user interfaces on iOS, iPadOS, macOS, watchOS, visionOS (and tvOS). Proactively use this skill for any question like "how should this screen/interaction be designed to feel like Apple", "does this follow Apple's design guidelines", "which native control should I use for this in SwiftUI/UIKit", "how should I set this icon/color/font/spacing/animation", "how do I design for accessibility here", "how do I use Liquid Glass", "which SF Symbol should I pick", "how do I design an app icon" — instead of answering from a training-data impression that may be outdated. The HIG is updated almost every year around WWDC (most notably the 2025 Liquid Glass design language), so relying on memory alone risks giving stale or inaccurate advice. Trigger this skill even when the user never says "HIG" or "Apple design guidelines" explicitly — any discussion of native Apple-platform app/game UI design, navigation structure, component choice, visual style, or interaction patterns should invoke it.
+description: Apple Human Interface Guidelines (HIG) reference for designing or reviewing UI on iOS, iPadOS, macOS, watchOS, visionOS, tvOS. Use when the user asks how a screen, navigation structure, or interaction should be designed to feel native on an Apple platform; whether a design follows Apple's guidelines; which system control to use in SwiftUI/UIKit; how to set a color, font, spacing, or animation; how to design an app icon or pick an SF Symbol; how to use Liquid Glass; or how to design for accessibility — including when the user never says "HIG" or "Apple design guidelines".
 ---
 
 # Apple Design (Apple Human Interface Guidelines reference skill)
 
-This skill distills Apple's official design resources (`developer.apple.com/design/`) into ready-to-use reference material, so you can give interface design or review advice for iOS / iPadOS / macOS / watchOS / visionOS apps that is **grounded in current, official guidance** rather than guesswork.
+This skill distills Apple's official design resources (`developer.apple.com/design/`) into ready-to-use reference material, so you can give interface design and review advice for iOS / iPadOS / macOS / watchOS / visionOS / tvOS apps that is grounded in current official guidance.
 
-## Why you can't rely on training knowledge alone
+## Grounded, or guessing
 
-The specifics of the HIG — exact spacing values, minimum hit targets, color semantics, even what a component is officially called — shift almost every year around WWDC. In June 2025, Apple introduced an entirely new design language, **Liquid Glass**, which rebuilt the materials, icon, and control-appearance system across iOS/iPadOS/macOS from the ground up. Training-data memory of "Apple design guidelines" likely predates Liquid Glass, or mixes up specs from different platforms. **Whenever a request involves a specific number, component name, or visual spec, check the material this skill has curated — or the live official page — before answering from memory.**
+Every specific claim you make — a point value, a contrast ratio, a component's official name, an API name — is either **grounded** or it's a guess:
+
+- **Grounded** — you read it in a `references/` file in this skill, or you just fetched the official page.
+- **Guess** — it came from training memory.
+
+State guesses as guesses, never as specs. The HIG is retuned almost every year around WWDC, and June 2025 replaced the entire materials, icon, and control-appearance system with **Liquid Glass** — so training memory of "Apple design guidelines" likely predates that change, or mixes specs across platforms. When a claim can't be grounded, say so and hand the user the official URL.
+
+Qualitative advice ("keep the primary action reachable one-handed") doesn't need this treatment. Numbers, official names, and specs do.
 
 ## The overall structure of the HIG
 
-The official HIG (`developer.apple.com/design/human-interface-guidelines/`) is organized into five top-level sections, from abstract to concrete:
+The official HIG (`developer.apple.com/design/human-interface-guidelines/`) is organized into six top-level sections, from abstract to concrete:
 
 1. **Getting started** — Design principles, plus per-platform overviews (iOS/iPadOS/macOS/tvOS/visionOS/watchOS/games)
 2. **Foundations** — Elements that run through every interface: Accessibility, App icons, Color, Materials, Typography, Layout, SF Symbols, Motion, Privacy, Dark Mode, etc.
@@ -26,16 +33,30 @@ The complete sitemap and every page URL live in [references/hig-sitemap.md](refe
 
 ## How to use this skill
 
-Work through a design question in this order — it covers the vast majority of scenarios:
+Identify the **target platform(s)** first. Ergonomics, input methods, and component conventions differ substantially across platforms — read the relevant section of [references/platforms.md](references/platforms.md) before carrying an iPhone-shaped assumption over to Apple Watch or Vision Pro. Then take the branch that matches the request.
 
-1. **Identify the target platform(s)** first. Ergonomics, input methods, and component conventions differ substantially across platforms — read the relevant platform section in [references/platforms.md](references/platforms.md) before carrying an iPhone-shaped assumption over to Apple Watch or Vision Pro.
-2. **Decide whether this is a "foundation" question or a "specific component/pattern" question**:
-   - Color, typography/type size, SF Symbols, materials (especially Liquid Glass), icons, layout/safe areas, accessibility → check the matching references file below
-   - How to use a specific control (buttons, tab bars, sidebars, lists, toolbars, etc.) → check [references/components.md](references/components.md); for anything not covered there, look up the URL in [references/hig-sitemap.md](references/hig-sitemap.md)
-   - An interaction pattern (onboarding flows, search, undo, gestures) → check [references/patterns-gestures.md](references/patterns-gestures.md)
-3. **Explain the "why," not just the "what."** Ground advice in the design principles in [references/principles.md](references/principles.md), or in the concrete official rationale (e.g. "because the hit target must be 44×44pt," not "because Apple says so").
-4. **Verify precise values or recent changes against the source.** The summaries in this skill are condensed and paraphrased in plain language, covering the most common scenarios — but they don't cover all 100+ pages of the HIG. When a summary doesn't mention the specific component you need, or you need an exact point value or API name, use WebFetch or a browser tool to open the matching URL in [references/hig-sitemap.md](references/hig-sitemap.md). HIG pages are JavaScript-rendered single-page apps, so plain WebFetch often only captures the page title, not the body — if that happens, switch to a browser tool (navigate → wait 1-2s → get_page_text) to get the real content. Never fabricate content from training knowledge when a fetch fails.
-5. **When it's time to produce actual design files/prototypes**, point to the official UI Kits, fonts, SF Symbols, and Icon Composer in [references/resources.md](references/resources.md) instead of having the user redraw standard system controls from scratch.
+### Branch A — designing something new
+
+1. Decide whether this is a **foundation** question or a **specific component/pattern** question:
+   - Color, typography/type size, SF Symbols, materials (especially Liquid Glass), icons, layout/safe areas, accessibility → the matching file in the reference index below
+   - How to use a specific control (buttons, tab bars, sidebars, lists, toolbars) → [references/components.md](references/components.md); for anything it doesn't cover, look up the slug in [references/hig-sitemap.md](references/hig-sitemap.md)
+   - An interaction pattern (onboarding flows, search, undo, gestures) → [references/patterns-gestures.md](references/patterns-gestures.md)
+2. Explain the **why**, not just the what. Ground advice in the design principles in [references/principles.md](references/principles.md), or in the concrete official rationale ("so the control stays comfortable to hit at Apple's 44×44pt default size," not "because Apple says so").
+3. When it's time to produce actual design files or prototypes, point to the official UI Kits, fonts, SF Symbols, and Icon Composer in [references/resources.md](references/resources.md) instead of having the user redraw standard system controls from scratch.
+
+**Done when** every number, component name, and API name in the answer is grounded, and each recommendation carries its rationale.
+
+### Branch B — reviewing an existing design
+
+Walk **all eight principles** in [references/principles.md](references/principles.md) in order, giving each an explicit verdict: conforms / violated (naming the specific element) / not applicable here. Then check the specs the review actually touches — hit targets, type sizes, contrast, safe areas — against [references/accessibility.md](references/accessibility.md) and [references/layout.md](references/layout.md).
+
+**Done when** all eight principles carry a verdict — including the ones that turned out fine, so the user can see the review was exhaustive — and every spec cited is grounded.
+
+### Branch C — looking up one fact
+
+Check the reference index below first; those summaries answer most questions. When a summary doesn't mention the component you need, or the user needs an exact point value or API name, open the matching URL from [references/hig-sitemap.md](references/hig-sitemap.md).
+
+**Fetching HIG pages**: they are JavaScript-rendered single-page apps, so a plain WebFetch often captures only the page title, not the body. If a fetch comes back suspiciously short, switch to a browser tool (navigate → wait 1-2s → get_page_text). If it still fails, give the user the URL and tell them the content wasn't retrieved.
 
 ## The eight design principles (quick reference)
 
@@ -60,17 +81,23 @@ Full explanations live in [references/principles.md](references/principles.md); 
 | watchOS | Glance-and-go, sub-minute interactions on the wrist | Digital Crown navigation | Digital Crown, Action button, simple gestures |
 | visionOS | Spatial computing, windows floating in real space | Floating tab bar / sidebar | Eyes + indirect/direct gestures |
 
+tvOS isn't summarized in [references/platforms.md](references/platforms.md) — for tvOS questions, fetch `designing-for-tvos` via [references/hig-sitemap.md](references/hig-sitemap.md). (tvOS specs *are* covered in the accessibility, typography, and layout reference files.)
+
 ## Liquid Glass in one paragraph
 
 Introduced in 2025, this new material is meant for the **control and navigation layer** (tab bars, sidebars, toolbars) — not the content layer. Standard system components pick it up automatically; custom components should use it sparingly. It comes in two variants: **regular** (preserves legibility, use for most cases) and **clear** (emphasizes visibility of a rich media background underneath). By default it has no inherent color and tints itself from what's behind it — apply color sparingly, and prefer tinting the background rather than the symbols/text on top of it. Full rules in [references/materials-color.md](references/materials-color.md).
 
-## Accessibility numbers you can't afford to skip (easy to miss, easy to get called out on)
+## Accessibility specs (condensed; [references/accessibility.md](references/accessibility.md) is authoritative)
 
-| Check | iOS/iPadOS | macOS | watchOS | visionOS |
-|---|---|---|---|---|
-| Default text size | 17pt | 13pt | 16pt | 17pt |
-| Minimum control hit target | 44×44pt | 28×28pt | 44×44pt | 60×60pt |
-| Text contrast (≤17pt) | 4.5:1 (WCAG AA) | same | same | same |
+| Spec | iOS/iPadOS | macOS | tvOS | watchOS | visionOS |
+|---|---|---|---|---|---|
+| Default text size | 17pt | 13pt | 29pt | 16pt | 17pt |
+| Minimum text size | 11pt | 10pt | 23pt | 12pt | 12pt |
+| Default control size | 44×44pt | 28×28pt | 66×66pt | 44×44pt | 60×60pt |
+| Minimum control size | 28×28pt | 20×20pt | 56×56pt | 28×28pt | 28×28pt |
+| Text contrast (≤17pt) | 4.5:1 (WCAG AA) | same | same | same | same |
+
+**Default is the design target; minimum is the floor.** Quote 44×44pt (iOS/iPadOS/watchOS) and 60×60pt (visionOS) as what a control should be — the [Buttons guidance](references/components.md) states those as a floor for buttons specifically. The much smaller "minimum control size" row is an absolute lower bound from the accessibility page; don't hand it to a user as a design target.
 
 Full accessibility guidance (vision, hearing, mobility, speech, cognitive) lives in [references/accessibility.md](references/accessibility.md).
 
@@ -83,7 +110,7 @@ Full accessibility guidance (vision, hearing, mobility, speech, cognitive) lives
 | [references/materials-color.md](references/materials-color.md) | The full rules for Materials, Liquid Glass, and the Color system |
 | [references/typography-symbols.md](references/typography-symbols.md) | Font families, Dynamic Type, and SF Symbols rendering modes/weights/animations |
 | [references/layout.md](references/layout.md) | Visual hierarchy, size classes, safe areas, adaptability |
-| [references/accessibility.md](references/accessibility.md) | Concrete specs and numbers across the five accessibility dimensions |
+| [references/accessibility.md](references/accessibility.md) | **Authoritative specs table** plus guidance across the five accessibility dimensions |
 | [references/components.md](references/components.md) | Best practices for Buttons, Tab bars, Sidebars, Lists/Tables, Toolbars |
 | [references/app-icons.md](references/app-icons.md) | Layered icon design, the Icon Composer workflow, Liquid Glass icon appearances |
 | [references/patterns-gestures.md](references/patterns-gestures.md) | Gesture design principles, standard per-platform gestures, common interaction patterns |

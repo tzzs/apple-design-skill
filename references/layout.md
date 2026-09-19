@@ -1,6 +1,6 @@
 # Layout
 
-Source: `.../layout` (updated 2026-09-09)
+Source: `.../layout`
 
 ## Visual hierarchy
 
