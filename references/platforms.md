@@ -84,9 +84,7 @@ When designing a cross-platform feature or making a platform-adaptation decision
 
 | Dimension | iOS | iPadOS | macOS | watchOS | visionOS |
 |---|---|---|---|---|---|
-| Default text size | 17pt | 17pt | 13pt | 16pt | 17pt |
-| Minimum control hit target | 44×44pt | 44×44pt | 28×28pt | 44×44pt | 60×60pt |
 | Primary navigation | Tab bar | Tab bar / sidebar, adaptive | Menu bar + sidebar | Digital Crown + lists | Floating tab bar / sidebar |
 | Freely resizable windows | No | Yes (multitasking/split view) | Yes | N/A | Yes (movable, resizable windows) |
 
-Values come from [layout.md](layout.md) and [accessibility.md](accessibility.md)'s Specifications tables — verify against the original source before giving precision-critical advice, since these numbers get tuned per platform release.
+Per-platform **numbers** — default and minimum text sizes, default and minimum control sizes, contrast ratios — live in one place only: the Specifications tables in [accessibility.md](accessibility.md). Read them there rather than from a copy, and note that "default" and "minimum" are two different columns that are easy to conflate.

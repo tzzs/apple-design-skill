@@ -1,6 +1,6 @@
 # Design Principles
 
-Source: `https://developer.apple.com/design/human-interface-guidelines/design-principles` (reintroduced June 8, 2026)
+Source: `https://developer.apple.com/design/human-interface-guidelines/design-principles`
 
 Apple frames its design principles as eight complementary values, not a rigid rulebook — they're thinking tools for weighing tradeoffs and making design decisions, not a checklist to tick off. When advising a user, cite one of these to explain *why* something works better, rather than just saying "Apple recommends this."
 

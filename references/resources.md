@@ -4,7 +4,7 @@ Source: `https://developer.apple.com/design/resources/`, `https://developer.appl
 
 When a user is ready to start producing actual design work, point them to these official resources instead of having them redraw every standard control from scratch — Apple ships official UI Kits and templates that update with each system release and stay pixel-accurate to system components.
 
-## UI Kits (per platform, updated yearly alongside major OS releases; currently iOS/iPadOS/macOS 27, watchOS 26, visionOS 26, tvOS 18)
+## UI Kits (one per platform, rebuilt yearly alongside the major OS releases)
 
 | Platform | Formats | Notes |
 |---|---|---|
@@ -38,18 +38,18 @@ See [typography-symbols.md](typography-symbols.md) for details.
 
 ## SF Symbols
 
-The symbol library (currently **SF Symbols 8 beta** as of June 2026, 7,000+ symbols, 9 weights, 3 scales; the prior SF Symbols 7 introduced gradient rendering and Draw animations). Requires macOS Sonoma or later to run the app itself. See [typography-symbols.md](typography-symbols.md) for details.
+The symbol library — 7,000+ symbols, 9 weights, 3 scales, with a new major version each WWDC (SF Symbols 7 added gradient rendering and Draw animations). Check the download page for the current version and its macOS requirement. See [typography-symbols.md](typography-symbols.md) for details.
 
 ## Other tools
 
-- **Icon Composer** (currently Version 2 beta, June 2026) — builds layered, Liquid-Glass-capable app icons for multiple platforms; bundled with Xcode, also downloadable separately, requires macOS Sequoia or later. See [app-icons.md](app-icons.md)
+- **Icon Composer** — builds layered, Liquid-Glass-capable app icons for multiple platforms; bundled with Xcode, also downloadable separately. See [app-icons.md](app-icons.md)
 - **Parallax Previewer** — previews the parallax effect for tvOS/visionOS icons (Mac app)
 - **Pass Designer** — creates and previews Apple Wallet passes (Mac app)
 - **Reality Composer Pro** — previews and prepares 3D content (relevant to visionOS)
 
 ## Product bezels (device mockup frames)
 
-Photoshop/PNG device bezels for building App Store assets and demo images: Apple TV, Apple Watch (Ultra 3/Ultra 2/Series 11, etc.), iPad (various models), iPhone (various models), Mac (Studio Display/iMac/MacBook line), and more — updated to iPhone 17 line / Apple Watch Series 11 as of September 2025.
+Photoshop/PNG device bezels for building App Store assets and demo images: Apple TV, Apple Watch, iPad, iPhone, and Mac (Studio Display/iMac/MacBook line). Apple refreshes these after each hardware announcement, so grab the current set rather than reusing last year's frames.
 
 ## A suggested path from getting started to shipping (from the Get Started page)
 
